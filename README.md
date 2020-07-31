@@ -34,7 +34,7 @@ This project is heavily inspired from @out386 's telegram bot which is written i
 - Mirror Telegram files to google drive
 - Mirror all youtube-dl supported links
 - Extract zip, rar, tar and many supported file types and uploads to google drive
-- Copy files from someone's drive to your drive (using Autorclone)
+- Copy files from someone's drive to your drive (using Rclone)
 - Service account support in cloning and uploading
 - Download progress
 - Upload progress
@@ -46,42 +46,26 @@ This project is heavily inspired from @out386 's telegram bot which is written i
 ## Bot commands to be set in botfather
 
 ```
-mirror - Start Mirroring
-tarmirror - Upload tar (zipped) file
-unzipmirror - Extract files
+mirror - start mirroring
+tarmirror - upload tar (zipped) file
+unzipmirror - extract files
 clone - copy folder to drive
 watch - mirror YT-DL support link
 tarwatch - mirror youtube playlist link as tar
-cancel - Cancel a task
-cancelall - Cancel all tasks
-del - Delete file from Drive
+cancel - cancel a task
+cancelall - cancel all tasks
+del - delete file from drive
 list - [query] searches files in G-Drive
-status - Get Mirror Status message
-stats - Bot Usage Stats
-help - Get Detailed Help
-log - Bot Log [owner only]
+status - get mirror status message
+stats - bot usage stats
+help - get detailed help
+ping - ping bot
+log - bot log [owner only]
 ```
 
 # How to deploy?
-Deploying is pretty much straight forward and is divided into several steps as follows:
-## Installing requirements
 
-- Clone this repo:
-```
-git clone https://github.com/magneto261290/magneto-python-aria mirror-bot/
-cd mirror-bot
-```
-
-- Install requirements
-For Debian based distros
-```
-sudo apt install python3
-sudo snap install docker 
-```
-- For Arch and it's derivatives:
-```
-sudo pacman -S docker python
-```
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## Setting up config file
 ```
@@ -131,20 +115,6 @@ Note: You can limit maximum concurrent downloads by changing the value of MAX_CO
 ```
 pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
 python3 generate_drive_token.py
-```
-## Deploying
-
-- Start docker daemon (skip if already running):
-```
-sudo dockerd
-```
-- Build Docker image:
-```
-sudo docker build . -t mirror-bot
-```
-- Run the image:
-```
-sudo docker run mirror-bot
 ```
 
 # Using service accounts for uploading to avoid user rate limit
